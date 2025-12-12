@@ -25,7 +25,7 @@ fini=$(docker container exec image ls /home/Termine)
 
 for $fic in $fini
 do
-    docker container cp ../$fic image:/home/Ntraite/$fic
+    docker container cp image:/home/Termine/$fic ../ImageTraite
 done
 
 docker container stop image
