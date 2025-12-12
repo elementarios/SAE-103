@@ -19,6 +19,6 @@ retirer le titre
 
 utiliser pour lancer un docker:
 
-docker container run -d --name [nom container] [image] tail -f /dev/null
+docker container run --rm -d --name [nom container] [image] tail -f /dev/null
 
 (tail -f /dev/null) permet de maintenir le container vivant
