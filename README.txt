@@ -16,3 +16,9 @@ retirer le titre
 -puis on utilise la tableau obtenue via le fichier depts pour avoir avoir un tableau de la forme [nom_région]= liste_nom_depts
 
 
+
+utiliser pour lancer un docker:
+
+docker container run -d --name [nom container] [image] tail -f /dev/null
+
+(tail -f /dev/null) permet de maintenir le container vivant
