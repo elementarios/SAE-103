@@ -19,7 +19,7 @@ do
     docker container cp ../$fic image:/home/Ntraite/$fic
 done
 
-docker container exec bash /home/deuxieme.bash
+docker container exec bash image:/home/deuxieme.bash
 
 fini=$(docker container exec image ls /home/Termine)
 
