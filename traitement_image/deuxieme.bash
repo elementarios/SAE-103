@@ -24,7 +24,7 @@ do
             elif [(tailleX*0.4 -le 900) -a (tailleY*0.4 -le 620) -a (tailleX*0.4 -ge 350) -a (tailleY*0.4 -ge 250)]
             then    
                 convert ./Ntraite/$fich -resize 40% ./Termine/$nomfic.webp
-
+ 
             elif [(tailleX*0.2 -le 900) -a (tailleY*0.2 -le 620) -a (tailleX*0.2 -ge 350) -a (tailleY*0.2 -ge 250)]
             then    
                 convert ./Ntraite/$fich -resize 20% ./Termine/$nomfic.webp
