@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-docker container run --rm -d --name image sae103-imagick tail -f /dev/null
+docker container run --rm -d --name image bigpapoo/sae103-imagick tail -f /dev/null
 docker container cp ./deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
 docker container exec image mkdir /home/Termine
