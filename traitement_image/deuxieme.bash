@@ -17,7 +17,7 @@ do
             then
                 convert ./Ntraite/$fic -resize 80% ./Termine/$nomfic.webp
 
-            elif [(tailleX*0.6 -le 900) -a (tailleY*0.6 -le 620) -a (tailleX*0.6 -ge 350) -a (tailleY*0.6 -ge 250)]
+            elif [(tailleX*0.6 -le 900) -a (tailleY*0.6 -le 620) -a (tailleX*0.6 -ge 350) -a (tailleY*0.6 -ge 250)] 
             then    
                 convert ./Ntraite/$fic -resize 60% ./Termine/$nomfic.webp
 
@@ -91,24 +91,24 @@ do
         then
             if [(tailleX*0.8 -le 900) -a (tailleY*0.8 -le 620) -a (tailleX*0.8 -ge 350) -a (tailleY*0.8 -ge 250)] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
             then
-                convert ./Ntraite/$fic -resize 80% ./Termine/$fic.webp
+                convert ./Ntraite/$fic -resize 80% ./Termine/$fic
 
             elif [(tailleX*0.6 -le 900) -a (tailleY*0.6 -le 620) -a (tailleX*0.6 -ge 350) -a (tailleY*0.6 -ge 250)]
             then    
-                convert ./Ntraite/$fic -resize 60% ./Termine/$fic.webp
+                convert ./Ntraite/$fic -resize 60% ./Termine/$fic
 
             elif [(tailleX*0.4 -le 900) -a (tailleY*0.4 -le 620) -a (tailleX*0.4 -ge 350) -a (tailleY*0.4 -ge 250)]
             then    
-                convert ./Ntraite/$fic -resize 40% ./Termine/$fic.webp
+                convert ./Ntraite/$fic -resize 40% ./Termine/$fic
  
             elif [(tailleX*0.2 -le 900) -a (tailleY*0.2 -le 620) -a (tailleX*0.2 -ge 350) -a (tailleY*0.2 -ge 250)]
             then    
-                convert ./Ntraite/$fic -resize 20% ./Termine/$fic.webp
+                convert ./Ntraite/$fic -resize 20% ./Termine/$fic
             fi
 
 
         else #l'image possede les bonne dimensions
-            convert ./Ntraite/$fic ./Termine/$fic.webp
+            convert ./Ntraite/$fic ./Termine/$fic
 
         fi
 
