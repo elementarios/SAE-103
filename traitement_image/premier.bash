@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-docker container run --rm -d --name image sae103-imagick tail -f /dev/null #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
-docker container cp ./deuxieme.bash image:/home
+docker container run -d --name image sae103-imagick sleep 3000 #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
+docker container cp ./traitement_image/deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
 docker container exec image mkdir /home/Termine
 mkdir ../ImageTraite
