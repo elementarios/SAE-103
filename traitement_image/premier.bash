@@ -3,7 +3,7 @@ docker run -dit --name image sae103-imagick  #changer  en bigpapoo/sae103-imagic
 docker container cp ./traitement_image/deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
 docker container exec image mkdir /home/Termine
-mkdir ../ImageTraite
+mkdir ./ImageTraite
 
 ficpng=ls ./*.png
 ficjpeg=ls ./*.jpg
