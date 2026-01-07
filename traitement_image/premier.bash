@@ -12,17 +12,17 @@ ficwebp=$(ls *.webp)
 for fic in $ficpng
 do
     chmod +r $fic
-    docker container cp ../$fic image:/home/Ntraite/$fic
+    docker container cp ./$fic image:/home/Ntraite/$fic
 done
 
 for fic in $ficjpeg
 do
-    docker container cp ../$fic image:/home/Ntraite/$fic
+    docker container cp ./$fic image:/home/Ntraite/$fic
 done
 
 for fic in $ficwebp
 do
-    docker container cp ../$fic image:/home/Ntraite/$fic
+    docker container cp ./$fic image:/home/Ntraite/$fic
 done
 
 docker container exec image bash /home/deuxieme.bash
