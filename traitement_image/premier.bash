@@ -5,14 +5,14 @@ docker container exec image mkdir /home/Ntraite
 docker container exec image mkdir /home/Termine
 mkdir ./ImageTraite
 
-ficpng=ls ./*.png
-ficjpeg=ls ./*.jpg
-ficwebp=ls ./*.webp
+ficpng=ls *.png
+ficjpeg=ls *.jpg
+ficwebp=ls *.webp
 
-for $fic1 in $ficpng
+for $fica in $ficpng
 do
-    chmod +r $fic1
-    docker container cp ../$fic1 image:/home/Ntraite/$fic1
+    chmod +r $fica
+    docker container cp ../$fica image:/home/Ntraite/$fica
 done
 
 for $fic2 in $ficjpeg
