@@ -1,5 +1,8 @@
 #!/usr/bin/bash
-for $fic in ./Ntraite/*.jpeg
+ficjpg=ls ./Ntraite/*.jpg
+ficpng=ls ./Ntraite/*.png
+ficwebp=ls ./Ntraite/*.webp
+for $fic in $ficjpg
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
@@ -39,7 +42,7 @@ do
     fi
 done
 
-for $fic in ./Ntraite/*.png
+for $fic in $ficpng
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
@@ -47,7 +50,7 @@ do
 
     #pour obtenir le nom de l'image sans l'extension
     dernierchar=eccho $fic | wc -c
-    nomfic=eccho $fic | colrm $dernierchar-3 $dernierchar
+    nomfic=eccho $fic | colrm $dernierchar-4 $dernierchar
 
     if [ $tailleX -gt 350 ] && [ $tailleY -gt 250 ] #on verifie que l'image n'est pas trop petite
     then
@@ -79,7 +82,7 @@ do
     fi
 done
 
-for $fic in ./Ntraite/*.webp
+for $fic in $ficwebp
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1

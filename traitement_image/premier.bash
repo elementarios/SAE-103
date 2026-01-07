@@ -11,6 +11,7 @@ ficwebp=ls ./*.webp
 
 for $fic1 in $ficpng
 do
+    chmod +r $fic1
     docker container cp ../$fic1 image:/home/Ntraite/$fic1
 done
 
