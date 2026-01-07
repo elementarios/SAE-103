@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-ficjpg=$(ls Ntraite/*.jpg)
-ficpng=$(ls Ntraite/*.png)
-ficwebp=$(ls Ntraite/*.webp)
+ficjpg=$(ls /home/Ntraite/*.jpg)
+ficpng=$(ls /home/Ntraite/*.png)
+ficwebp=$(ls /home/Ntraite/*.webp)
 for fic in $ficjpg
 do
     #pour obtenir la taille de l'image
