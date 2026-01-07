@@ -1,8 +1,8 @@
 #!/usr/bin/bash
-ficjpg=ls ./Ntraite/*.jpg
-ficpng=ls ./Ntraite/*.png
-ficwebp=ls ./Ntraite/*.webp
-for $fic in $ficjpg
+ficjpg=$(ls Ntraite/*.jpg)
+ficpng=$(ls Ntraite/*.png)
+ficwebp=$(ls Ntraite/*.webp)
+for fic in $ficjpg
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
@@ -42,7 +42,7 @@ do
     fi
 done
 
-for $fic in $ficpng
+for fic in $ficpng
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
@@ -82,7 +82,7 @@ do
     fi
 done
 
-for $fic in $ficwebp
+for fic in $ficwebp
 do
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
