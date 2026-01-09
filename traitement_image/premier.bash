@@ -10,23 +10,7 @@ ficjpeg=$(ls *.jpg)
 ficwebp=$(ls *.webp)
 ficpdf=$(ls *.pdf)
 
-for fic in $ficpng
-do
-    chmod +r $fic
-    docker container cp ./$fic image:/home/Ntraite/$fic
-done
-
-for fic in $ficjpeg
-do
-    docker container cp ./$fic image:/home/Ntraite/$fic
-done
-
-for fic in $ficwebp
-do
-    docker container cp ./$fic image:/home/Ntraite/$fic
-done
-
-for fic in $ficpdf
+for fic in $ficpng $ficjpeg $ficpdf $ficwebp
 do
     docker container cp ./$fic image:/home/Ntraite/$fic
 done
