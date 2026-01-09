@@ -68,21 +68,21 @@ do
 
     if [[ $tailleX -gt 350 ]] && [[ $tailleY -gt 250 ]] #on verifie que l'image n'est pas trop petite
     then
-        if  [ $tailleX -gt 900 ] && [ $tailleY -gt 620 ] #si l'image est trop grande 
+        if  [[ $tailleX -gt 900 ]] && [[ $tailleY -gt 620 ]] #si l'image est trop grande 
         then
-            if [ $($tailleX*0.8 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.8 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.8 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.8 | cut -d '.' -f 1) -ge 250 ] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
+            if [[ $($tailleX*0.8 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.8 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.8 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.8 | cut -d '.' -f 1) -ge 250 ]] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
             then
                 convert /home/Ntraite/$fic -resize 80% /home/Termine/$fic
 
-            elif [ $($tailleX*0.6 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.6 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.6 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.6 | cut -d '.' -f 1) -ge 250 ] 
+            elif [[ $($tailleX*0.6 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.6 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.6 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.6 | cut -d '.' -f 1) -ge 250 ]] 
             then    
                 convert /home/Ntraite/$fic -resize 60% /home/Termine/$fic
 
-            elif [ $($tailleX*0.4 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.4 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.4 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.4 | cut -d '.' -f 1) -ge 250 ]
+            elif [[ $($tailleX*0.4 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.4 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.4 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.4 | cut -d '.' -f 1) -ge 250 ]]
             then    
                 convert /home/Ntraite/$fic -resize 40% /home/Termine/$fic
  
-            elif [ $($tailleX*0.2 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.2 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.2 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.2 | cut -d '.' -f 1) -ge 250 ]
+            elif [[ $($tailleX*0.2 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.2 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.2 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.2 | cut -d '.' -f 1) -ge 250 ]]
             then    
                 convert /home/Ntraite/$fic -resize 20% /home/Termine/$fic
             fi
