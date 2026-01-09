@@ -6,6 +6,9 @@ ficpdf=$(ls /home/Ntraite/*.webp)
 
 for fic in $ficjpg $ficpdf $ficpng
 do
+
+    chmod 666 $fic #on se trouve dans un container qui sera detruit des la fin de la commande donc on peut modifier les droits 
+
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
     tailleY=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 2
