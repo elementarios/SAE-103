@@ -21,7 +21,7 @@ do
 done
 
 #on execute le script du container
-docker container exec image bash /home/deuxieme.bash
+docker container exec -u root image bash /home/deuxieme.bash
 
 #on recupere toutes les images modifiés
 fini=$(docker container exec image ls /home/Termine)

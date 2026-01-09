@@ -8,6 +8,7 @@ for fic in $cpjpg $cppdf $cppng $cpwebp
 do
     ficSansChemin= cut -d '/' -f 4
     cp $fic /home/Encours/$ficSansChemin
+    chmod 666 /home/Encours/$ficSansChemin
 done
 
 ficjpg=$(ls /home/Encours/*.jpg)
