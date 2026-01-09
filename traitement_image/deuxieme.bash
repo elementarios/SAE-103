@@ -22,7 +22,9 @@ do
     then
         if  [ $tailleX -gt 900 ] && [ $tailleY -gt 620 ] #si l'image est trop grande 
         then
-            if [ $tailleX*0.8 -le 900 ] && [ $tailleY*0.8 -le 620 ] && [ $tailleX*0.8 -ge 350 ] && [ $tailleY*0.8 -ge 250 ] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
+            tailleCalculX=$tailleX*0.8 | cut -d '.' -f 1 #on fait une tronçature afin d'obtenir un entier
+            tailleCalculY=$tailleY*0.8 | cut -d '.' -f 1
+            if [ $tailleCalculX -le 900 ] && [ $tailleCalculY -le 620 ] && [ $tailleCalculX -ge 350 ] && [ $tailleCalculX -ge 250 ] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
             then
                 convert /home/Ntraite/$fic -resize 80% /home/Termine/$nomfic.webp
 
