@@ -8,6 +8,7 @@ mkdir ./ImageTraite
 ficpng=$(ls *.png)
 ficjpeg=$(ls *.jpg)
 ficwebp=$(ls *.webp)
+ficpdf=$(ls *.pdf)
 
 for fic in $ficpng
 do
@@ -21,6 +22,11 @@ do
 done
 
 for fic in $ficwebp
+do
+    docker container cp ./$fic image:/home/Ntraite/$fic
+done
+
+for fic in $ficpdf
 do
     docker container cp ./$fic image:/home/Ntraite/$fic
 done
