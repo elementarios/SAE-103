@@ -4,6 +4,7 @@
 docker run -dit --name image sae103-imagick  #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
 docker container cp ./traitement_image/deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
+docker container exec image mkdir /home/Encours
 docker container exec image mkdir /home/Termine
 mkdir ./ImageTraite 
 
