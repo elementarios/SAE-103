@@ -2,8 +2,9 @@
 ficjpg=$(ls /home/Ntraite/*.jpg)
 ficpng=$(ls /home/Ntraite/*.png)
 ficwebp=$(ls /home/Ntraite/*.webp)
-ficpdf=$(ls /home/Ntraite/*.webp)
+ficpdf=$(ls /home/Ntraite/*.pdf)
 
+#on traite tout les fichier avec la mauvaise extension
 for fic in $ficjpg $ficpdf $ficpng
 do
 
@@ -13,7 +14,7 @@ do
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
     tailleY=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 2
 
-    #pour obtenir le nom de l'image sans l'extension
+    #pour obtenir le nom de l'image sans l'extension (chaque extension fait 3 caractère +1 point donc 4 au total)
     dernierchar=eccho $fic | wc -c
     nomfic=eccho $fic | colrm $dernierchar-4 $dernierchar
 
@@ -48,7 +49,7 @@ do
 done
 
 
-
+#on traite les fichier ayant la bonne extension
 for fic in $ficwebp
 do
     #pour obtenir la taille de l'image
