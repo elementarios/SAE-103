@@ -18,6 +18,7 @@ ficpdf=$(ls *.pdf)
 for fic in $ficpng $ficjpeg $ficpdf $ficwebp
 do
     docker container cp ./$fic image:/home/Ntraite/$fic
+    docker container exec -u root image chmod 666 /home/Ntraite/$fic
 done
 
 #on execute le script du container

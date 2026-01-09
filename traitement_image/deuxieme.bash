@@ -18,9 +18,7 @@ ficpdf=$(ls /home/Encours/*.pdf)
 
 #on traite tout les fichier avec la mauvaise extension
 for fic in $ficjpg $ficpdf $ficpng
-do
-
-    chmod 666 $fic #on se trouve dans un container qui sera detruit des la fin de la commande donc on peut modifier les droits 
+do 
 
     #pour obtenir la taille de l'image
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
@@ -32,21 +30,21 @@ do
 
     if [[ $tailleX -gt 350 ]] && [[ $tailleY -gt 250 ]] #on verifie que l'image n'est pas trop petite
     then
-        if  [ $tailleX -gt 900 ] && [ $tailleY -gt 620 ] #si l'image est trop grande 
+        if  [[ $tailleX -gt 900 ]] && [[ $tailleY -gt 620 ]] #si l'image est trop grande 
         then
-            if [ $($tailleX*0.8 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.8 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.8 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.8 | cut -d '.' -f 1) -ge 250 ] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
+            if [[ $($tailleX*0.8 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.8 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.8 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.8 | cut -d '.' -f 1) -ge 250 ]] #on verifie que pour certain ratio l'image correspondent au bonne dimensions
             then
                 convert /home/Ntraite/$fic -resize 80% /home/Termine/$nomfic.webp
 
-            elif [ $($tailleX*0.6 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.6 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.6 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.6 | cut -d '.' -f 1) -ge 250 ] 
+            elif [[ $($tailleX*0.6 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.6 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.6 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.6 | cut -d '.' -f 1) -ge 250 ]] 
             then    
                 convert /home/Ntraite/$fic -resize 60% /home/Termine/$nomfic.webp
 
-            elif [ $($tailleX*0.4 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.4 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.4 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.4 | cut -d '.' -f 1) -ge 250 ]
+            elif [[ $($tailleX*0.4 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.4 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.4 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.4 | cut -d '.' -f 1) -ge 250 ]]
             then    
                 convert /home/Ntraite/$fic -resize 40% /home/Termine/$nomfic.webp
  
-            elif [ $($tailleX*0.2 | cut -d '.' -f 1) -le 900 ] && [ $($tailleY*0.2 | cut -d '.' -f 1) -le 620 ] && [ $($tailleX*0.2 | cut -d '.' -f 1) -ge 350 ] && [ $($tailleY*0.2 | cut -d '.' -f 1) -ge 250 ]
+            elif [[ $($tailleX*0.2 | cut -d '.' -f 1) -le 900 ]] && [[ $($tailleY*0.2 | cut -d '.' -f 1) -le 620 ]] && [[ $($tailleX*0.2 | cut -d '.' -f 1) -ge 350 ]] && [[ $($tailleY*0.2 | cut -d '.' -f 1) -ge 250 ]]
             then    
                 convert /home/Ntraite/$fic -resize 20% /home/Termine/$nomfic.webp
             fi
@@ -68,7 +66,7 @@ do
     tailleX=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 1
     tailleY=identify $fic | cut -d ' ' -f 3 | cut -d 'x' -f 2
 
-    if [ $tailleX -gt 350 ] && [ $tailleY -gt 250 ] #on verifie que l'image n'est pas trop petite
+    if [[ $tailleX -gt 350 ]] && [[ $tailleY -gt 250 ]] #on verifie que l'image n'est pas trop petite
     then
         if  [ $tailleX -gt 900 ] && [ $tailleY -gt 620 ] #si l'image est trop grande 
         then
