@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 bash ./traitement_image/premier.bash
 
-bash ./Création_csv sites_touristiques_france v2.xlsx
+bash ./generer_pdf_par_xlsx.sh
