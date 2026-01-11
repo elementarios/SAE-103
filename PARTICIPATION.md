@@ -11,6 +11,13 @@ Temps total : XX H (ou YY min)
 | Pipo   | 60  |             |
 | Momo   | 0   | Malade      |
 
-## TACHE ZZZ
 
-etc.
+## TRANSFORMATION DU FICHIER XLSX EN TROIS DIFFERENTS CSV
+
+Temps total : XX H (ou YY min)
+
+| Membre | %   | Commentaire     |
+| ------ | --- | --------------- |
+| Thuân  | 100%| Tâche attribuée |
+| Ewan   | 0   |                 |
+| Leny   | 0   |                 |

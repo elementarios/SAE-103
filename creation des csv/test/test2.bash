@@ -13,7 +13,7 @@ XLSX="$1"
 CSV="${XLSX%.xlsx}.csv"
 
 # ======================
-# XLSX -> CSV (Docker)
+# XLSX -> CSV
 # ======================
 docker run --rm \
   -v "$PWD:/data" \
@@ -22,73 +22,70 @@ docker run --rm \
   ssconvert "$XLSX" "$CSV"
 
 # ======================
+# Nettoyage simple (bash)
+# ======================
+> clean.csv
+
+while IFS=',' read -r nom dept visiteurs
+do
+  # on garde l'en-tête
+  if [ "$nom" = "nom" ]; then
+    echo "$nom,$dept,$visiteurs" >> clean.csv
+  else
+    # on garde uniquement les lignes complètes
+    if [ -n "$nom" ] && [ -n "$dept" ] && [ -n "$visiteurs" ]; then
+      echo "$nom,$dept,$visiteurs" >> clean.csv
+    fi
+  fi
+done < "$CSV"
+
+# ======================
 # 1️⃣ Tri par département
 # ======================
-{
-  head -n1 "$CSV"
-  tail -n +2 "$CSV" | while IFS=',' read -r nom dept visiteurs; do
-    # clé de tri temporaire pour 2A/2B
-    if [ "$dept" = "2A" ]; then sort_key=20
-    elif [ "$dept" = "2B" ]; then sort_key=21
-    else sort_key=$dept
-    fi
-    echo "$sort_key,$nom,$dept,$visiteurs"
-  done | sort -t',' -k1,1n | cut -d',' -f3-
-} > sites-depts.csv
+head -n 1 clean.csv > sites-depts.csv
+tail -n +2 clean.csv | sort -t',' -k2,2 >> sites-depts.csv
 
 # ======================
 # 2️⃣ Tri par visiteurs
 # ======================
-{
-  head -n1 "$CSV"
-  tail -n +2 "$CSV" | while IFS=',' read -r nom dept visiteurs; do
-    if [ "$dept" = "2A" ]; then sort_key=20
-    elif [ "$dept" = "2B" ]; then sort_key=21
-    else sort_key=$dept
-    fi
-    # tri principal sur visiteurs, secondaire sur département
-    echo "$visiteurs,$sort_key,$nom,$dept"
-  done | sort -t',' -k1,1nr -k2,2n | cut -d',' -f3-
-} > sites-visites.csv
+head -n 1 clean.csv > sites-visites.csv
+tail -n +2 clean.csv | sort -t',' -k3,3nr >> sites-visites.csv
 
 # ======================
-# 3️⃣ Visiteurs par région (méthode REGIONS)
+# 3️⃣ Visiteurs par région
 # ======================
 echo "region,visiteurs_annuels" > regions-visites.csv
 
-# Pour chaque région du fichier REGIONS
-while IFS='=' read -r region depts_liste; do
-  # Supprimer espaces
-  depts_liste=$(echo "$depts_liste" | tr -d ' ')
-  total_region=0
+while IFS='=' read -r regions depts
+do
+  total=0
 
-  # Parcourir chaque département de la région
-  IFS=',' read -r -a depts <<< "$depts_liste"
-  for dept_code in "${depts[@]}"; do
-    # Conversion Corse pour le calcul
-    if [ "$dept_code" = "2A" ]; then dept_code=20
-    elif [ "$dept_code" = "2B" ]; then dept_code=21
-    fi
-
-    # Parcourir le CSV pour sommer les visiteurs de ce département
-    tail -n +2 "$CSV" | while IFS=',' read -r nom dept visiteurs; do
-      if [ "$dept" = "2A" ]; then dept=20
-      elif [ "$dept" = "2B" ]; then dept=21
+  # boucle sur les départements de la région
+  for dept in $(echo "$depts" | tr ',' ' ')
+  do
+    # boucle sur le CSV
+    while IFS=',' read -r nom d v
+    do
+      if [ "$nom" != "nom" ] && [ "$d" = "$dept" ]; then
+        total=$((total + v))
       fi
-      if [ "$dept" = "$dept_code" ]; then
-        total_region=$(( total_region + visiteurs ))
-      fi
-    done
+    done < clean.csv
   done
 
-  # Afficher total pour la région
-  echo "$region,$total_region"
-done < REGIONS |
-sort -t',' -k2,2nr >> regions-visites.csv
+  echo "$region,$total" >> regions-visites.csv
+
+done < REGIONS
+
+# Tri final des régions
+head -n 1 regions-visites.csv > tmp.csv
+tail -n +2 regions-visites.csv | sort -t',' -k2,2nr >> tmp.csv
+mv tmp.csv regions-visites.csv
 
 # ======================
-# Fin
+# Nettoyage
 # ======================
+rm clean.csv
+
 echo "✔ Fichiers générés :"
 echo " - sites-depts.csv"
 echo " - sites-visites.csv"
