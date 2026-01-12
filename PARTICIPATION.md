@@ -1,7 +1,7 @@
 
 ## TRANSFORMATION DU FICHIER XLSX EN TROIS DIFFERENTS CSV
 
-Temps total : XX H (ou YY min)
+Temps total : environ 6h00
 
 | Membre | %   | Commentaire     |
 | ------ | --- | --------------- |
