@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 #on prepare la zone de travail
-docker run -dit --name image --user root sae103-imagick  #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
+docker run -dit --name image sae103-imagick  #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
 docker container cp ./traitement_image/deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
 docker container exec image mkdir /home/Encours
@@ -18,11 +18,10 @@ ficpdf=$(ls *.pdf)
 for fic in $ficpng $ficjpeg $ficpdf $ficwebp
 do
     docker container cp ./$fic image:/home/Ntraite/$fic
-    docker container exec -u root image chmod 666 /home/Ntraite/$fic
 done
 
-#on execute le script du container
-docker container exec -u root image bash /home/deuxieme.bash
+#on execute le script du container avec les meme droit que l'utilisateur
+docker container exec --user $(id -u):$(id -g) image bash /home/deuxieme.bash
 
 #on recupere toutes les images modifiés
 fini=$(docker container exec image ls /home/Termine)

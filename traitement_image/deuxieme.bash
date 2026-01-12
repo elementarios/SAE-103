@@ -1,20 +1,9 @@
 #!/usr/bin/bash
-cpjpg=$(ls /home/Ntraite/*.jpg)
-cppng=$(ls /home/Ntraite/*.png)
-cpwebp=$(ls /home/Ntraite/*.webp)
-cppdf=$(ls /home/Ntraite/*.pdf)
+ficjpg=$(ls /home/Ntraite/*.jpg)
+ficpng=$(ls /home/Ntraite/*.png)
+ficwebp=$(ls /home/Ntraite/*.webp)
+ficpdf=$(ls /home/Ntraite/*.pdf)
 
-for fic in $cpjpg $cppdf $cppng $cpwebp
-do
-    ficSansChemin= cut -d '/' -f 4
-    cp $fic /home/Encours/$ficSansChemin
-    chmod 666 /home/Encours/$ficSansChemin
-done
-
-ficjpg=$(ls /home/Encours/*.jpg)
-ficpng=$(ls /home/Encours/*.png)
-ficwebp=$(ls /home/Encours/*.webp)
-ficpdf=$(ls /home/Encours/*.pdf)
 
 #on traite tout les fichier avec la mauvaise extension
 for fic in $ficjpg $ficpdf $ficpng
