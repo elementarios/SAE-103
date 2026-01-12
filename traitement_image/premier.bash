@@ -1,10 +1,11 @@
 #!/usr/bin/bash
 
+uid=$(id -u)
+group=$(id -g)
 #on prepare la zone de travail
-docker run -dit --name image sae103-imagick  #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
+docker run -dit --name image  sae103-imagick  #changer  en bigpapoo/sae103-imagick si vous n'etes pas a l'iut
 docker container cp ./traitement_image/deuxieme.bash image:/home
 docker container exec image mkdir /home/Ntraite
-docker container exec image mkdir /home/Encours
 docker container exec image mkdir /home/Termine
 mkdir ./ImageTraite 
 
@@ -21,7 +22,7 @@ do
 done
 
 #on execute le script du container avec les meme droit que l'utilisateur
-docker container exec --user $(id -u):$(id -g) image bash /home/deuxieme.bash
+docker container exec --user $uid:$group image bash /home/deuxieme.bash
 
 #on recupere toutes les images modifiés
 fini=$(docker container exec image ls /home/Termine)
